@@ -36,6 +36,8 @@ ln -s /usr/local/python37/bin/qc-cli /usr/bin/qc-cli
 
 
 ### 命令行补全激活
+> **激活前请配置好配置文件`config.py` 或者通过指令`qc-cli -f /path/config.ini`指定配置文件**
+
 #### For Bash:
 ```
 eval "$(_QC_CLI_COMPLETE=source_bash qc-cli)"
