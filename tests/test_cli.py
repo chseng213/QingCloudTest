@@ -1,13 +1,21 @@
 # encoding: utf-8
+import os
 import unittest
 
 from click.testing import CliRunner
 
 from main.cli import cli
+from main.utils import BASE_DIR
 
 
 class CLITestCase(unittest.TestCase):
     runner = CliRunner()
+
+    def test_config_file(self):
+        result = self.runner.invoke(cli,
+                                    ["-f", os.path.join(BASE_DIR, "config.ini")])
+        print(result.output)
+        assert result.exit_code == 0
 
     def test_run_instances(self):
         result = self.runner.invoke(cli,
@@ -24,7 +32,7 @@ class CLITestCase(unittest.TestCase):
 
     def test_terminate_instances(self):
         result = self.runner.invoke(cli,
-                                    ['terminate-instances', "-i", "i-vxs8g1e9", "-i", ""])
+                                    ['terminate-instances', "-i", "i-x2i0du8e", "-i", "i-avbt9jtt", "-i", ""])
         assert result.exit_code == 0
         assert '"ret_code":0' in result.output
 
