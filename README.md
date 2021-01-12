@@ -35,26 +35,7 @@ ln -s /usr/local/python37/bin/qc-cli /usr/bin/qc-cli
 ```
 
 
-### 命令行补全激活
-> **激活前请配置好配置文件`config.py` 或者通过指令`qc-cli -f /path/config.ini`指定配置文件**
 
-#### For Bash:
-```
-eval "$(_QC_CLI_COMPLETE=source_bash qc-cli)"
-
-```
-
-#### For Zsh:
-```
-eval "$(_QC_CLI_COMPLETE=source_zsh  qc-cli)"
-
-```
-
-#### For Fish:
-```
-eval "$(_QC_CLI_COMPLETE=source_fish   qc-cli)"
-
-```
 
 ### 使用
 #### 编辑配置文件
@@ -69,6 +50,28 @@ zone='sh1'
 ```
 qc-cli -f /etc/qingcloud/config.ini
 ```
+
+#### 命令行补全激活
+> **激活前请配置好配置文件`config.py` 或者通过指令`qc-cli -f /path/config.ini`指定配置文件**
+
+##### For Bash:
+```
+eval "$(_QC_CLI_COMPLETE=source_bash qc-cli)"
+
+```
+
+##### For Zsh:
+```
+eval "$(_QC_CLI_COMPLETE=source_zsh  qc-cli)"
+
+```
+
+##### For Fish:
+```
+eval "$(_QC_CLI_COMPLETE=source_fish   qc-cli)"
+
+```
+
 
 #### 创建主机(RunInstances)
 >在command后输入  `--help` 可查看帮助 `qc-cli run-instances --help`  
