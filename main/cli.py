@@ -9,7 +9,7 @@ from main.utils import BASE_DIR, ConfigException, config_help_str, json_option_h
 from main.utils.validator import ConfigFileValidator
 
 
-@click.group()
+@click.group(invoke_without_command=True)
 @click.option('-f', "--file",
               type=click.File("r"),
               default=os.path.join(BASE_DIR, "config.py"),
@@ -36,8 +36,9 @@ def cli(file):
 @click.option("-J", "--json_args", type=str, help=json_option_help_str)
 def run_instances(image_id, login_mode, login_keypair, login_passwd, instance_type,
                   cpu, memory, instance_name, count, vxnets, json_args):
-    """action RunInstances :required params `image_id` `instance_type` `login_mode` ,
-       other unnecessary params use json format string
+    """action RunInstances
+    :required params `image_id` `instance_type` `login_mode` ,
+    other unnecessary params use json format string
     """
     params = locals()
     run_cli = RunInstanceAction()
