@@ -119,23 +119,3 @@ class URLConstructor(object):
         signature = self.get_signature(str_to_sign)
         return self.BASE_URL + request_str + "&signature=%s" % signature
 
-
-if __name__ == '__main__':
-    from config import qy_secret_access_key, qy_access_key_id, zone
-
-    print
-    URLConstructor(qy_secret_access_key, qy_access_key_id, zone).build_url("RunInstances",
-                                                                           {
-                                                                               "vxnets.1": "vxnet-0",
-                                                                               "zone": "sh1",
-                                                                               "instance_type": "e2.small.r1",
-                                                                               "signature_version": 1,
-                                                                               "signature_method": "HmacSHA256",
-                                                                               "instance_name": "demo",
-                                                                               "image_id": "centos64x86a",
-                                                                               "login_mode": "passwd",
-                                                                               "login_passwd": "QingCloud20130712",
-                                                                               "version": 1,
-                                                                           }
-
-                                                                           )
