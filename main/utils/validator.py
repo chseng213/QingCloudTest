@@ -48,7 +48,8 @@ class ConfigFileValidator(object):
                    and isinstance(qy_access_key_id, str) \
                    and isinstance(zone, str), not_string_info
             # rename config file
-            os.rename(temp_config_path, config_path) if new_config else 0
+            with open(temp_config_path) as f:
+                file_writer(f, config_path) if new_config else 0
         except ImportError:
             raise ConfigException(missing_params_info)
         except AssertionError:
