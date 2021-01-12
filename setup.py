@@ -10,8 +10,9 @@ setup(
         'Click',
         'requests',
     ],
-    entry_points={
-        'console_scripts': ['qc-cli=scripts.test:cli'],
-    }
+    entry_points="""
+        [console_scripts]
+        qc-cli=main.cli:cli
+    """
 
 )
