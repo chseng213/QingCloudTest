@@ -28,6 +28,11 @@ pip install --editable .
 ```
 **或者使用软链将你安装的python软链至/usr/bin/中**
 
+**编译完成后的cli指令也需要软链**  
+例如:
+```
+ln -s /usr/local/python37/bin/qc-cli /usr/bin/qc-cli
+```
 
 
 ### 命令行补全激活
