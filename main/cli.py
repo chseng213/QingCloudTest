@@ -3,7 +3,6 @@ import os
 
 import click
 
-from main.action import RunInstanceAction, DescribeInstanceAction, TerminateInstanceAction
 from main.utils import BASE_DIR, ConfigException, config_help_str, json_option_help_str, instances_n_help_str, \
     image_id_n_help_str, instance_type_n_help_str, direct_cease_help_str, login_help_str
 from main.utils.validator import ConfigFileValidator
@@ -20,6 +19,9 @@ def cli(file):
         ConfigFileValidator.validator(file)
     except ConfigException as e:
         click.echo(e)
+
+
+from main.action import RunInstanceAction, DescribeInstanceAction, TerminateInstanceAction
 
 
 @cli.command(name="run-instances")
