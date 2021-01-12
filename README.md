@@ -11,14 +11,12 @@ python2.7+
 
 
 ### 安装
-```
 
+```
 git clone https://github.com/chseng213/QingCloudTest.git
 cd QingCloudTest
-python setup.py build
-python setup.py install
+pip install -r requirements.txt
 pip install --editable .
-
 ```
 **注意**
 如果你的python是通过source code编译安装的   
@@ -27,17 +25,11 @@ pip install --editable .
  
 例如 python安装地址为:/usr/local/python37
 ```
-/usr/local/python37/bin/python setup.py build
-/usr/local/python37/bin/python setup.py install
+/usr/local/python37/bin/pip install -r requirements.txt
 /usr/local/python37/bin/pip install --editable .
 ```
 **或者使用软链将你安装的python软链至/usr/bin/中**
 
-**编译完成后的cli指令也需要软链**  
-例如:
-```
-ln -s /usr/local/python37/bin/qc-cli /usr/bin/qc-cli
-```
 
 
 ### 命令行补全激活
