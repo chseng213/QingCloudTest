@@ -127,7 +127,7 @@ class RunInstanceAction(Action):
         # vxnets
         vxnets = params.get("vxnet")
         if vxnets:
-            params.update({"vxnets.%s" % i: value for i, value in enumerate(vxnets, 1)})
+            params.update({"vxnets.%s" % i: value for i, value in enumerate(vxnets, 1) if value})
             params.pop("vxnet")
         return params
 
@@ -156,19 +156,19 @@ class DescribeInstanceAction(Action):
         # instances.n
         instances = params.get("instances")
         if instances:
-            params.update({"instances.%s" % i: value for i, value in enumerate(instances, 1)})
+            params.update({"instances.%s" % i: value for i, value in enumerate(instances, 1) if value})
             params.pop("instances")
 
         # image_id.n
         image_id_list = params.get("image_id")
         if image_id_list:
-            params.update({"image_id.%s" % i: value for i, value in enumerate(image_id_list, 1)})
+            params.update({"image_id.%s" % i: value for i, value in enumerate(image_id_list, 1) if value})
             params.pop("image_id")
 
         # instance_type.n
         instance_type_list = params.get("instance_type")
         if instance_type_list:
-            params.update({"instance_type.%s" % i: value for i, value in enumerate(instance_type_list, 1)})
+            params.update({"instance_type.%s" % i: value for i, value in enumerate(instance_type_list, 1) if value})
             params.pop("instance_type")
         return params
 
@@ -179,7 +179,7 @@ class TerminateInstanceAction(Action):
     def params_after_verification(self, params):
         instances = params.get("instances")
         if instances:
-            params.update({"instances.%s" % i: value for i, value in enumerate(instances, 1)})
+            params.update({"instances.%s" % i: value for i, value in enumerate(instances, 1) if value})
             params.pop("instances")
         else:
             raise click.BadParameter('TerminateInstances action should specify one or more instances id')
