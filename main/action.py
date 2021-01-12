@@ -6,8 +6,14 @@ import click
 from main.utils.errors import RequestsException
 from main.utils.request import Request
 from main.utils.url_constructor import URLConstructor
-from config import qy_secret_access_key, qy_access_key_id, zone
+
 from main.utils.validator import ArgsValidator
+
+try:
+    from config import qy_secret_access_key, qy_access_key_id, zone
+except Exception:
+    click.echo("CONFIG FILE NEED SPECIFY")
+    qy_secret_access_key, qy_access_key_id, zone = "", "", ""
 
 
 class Action(object):
