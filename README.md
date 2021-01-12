@@ -33,7 +33,7 @@ pip install --editable .
 ```
 ln -s /usr/local/python37/bin/qc-cli /usr/bin/qc-cli
 ```
-#### 关于python2.7.5一下版本出现`RequestsDependencyWarning`问题
+#### 关于python2.7.5以下版本出现`RequestsDependencyWarning`问题
 > /usr/lib/python2.7/site-packages/requests/__init__.py:89: RequestsDependencyWarning: urllib3 (1.26.2) or chardet (2.2.1) doesn't match a supported version!
   RequestsDependencyWarning)
 
