@@ -64,6 +64,7 @@ class Action(object):
         try:
             params = self.get_params(self.params_after_verification(params))
             url = self.build_url(params)
+            print(url)
             response = request.get(url)
             click.echo(response.text)
             return response
@@ -153,10 +154,10 @@ class DescribeInstanceAction(Action):
         params = self.validate_json_args(params)
 
         # instances.n
-        instances = params.get("instance")
+        instances = params.get("instances")
         if instances:
             params.update({"instances.%s" % i: value for i, value in enumerate(instances, 1)})
-            params.pop("instance")
+            params.pop("instances")
 
         # image_id.n
         image_id_list = params.get("image_id")
