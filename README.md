@@ -15,7 +15,6 @@ python2.7+
 ```
 git clone https://github.com/chseng213/QingCloudTest.git
 cd QingCloudTest
-pip install -r requirements.txt
 pip install --editable .
 ```
 **注意**
@@ -25,7 +24,6 @@ pip install --editable .
  
 例如 python安装地址为:/usr/local/python37
 ```
-/usr/local/python37/bin/pip install -r requirements.txt
 /usr/local/python37/bin/pip install --editable .
 ```
 **或者使用软链将你安装的python软链至/usr/bin/中**
