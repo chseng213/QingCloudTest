@@ -54,6 +54,8 @@ class ConfigFileValidator(object):
             raise ConfigException(missing_params_info)
         except AssertionError:
             raise ConfigException(not_string_info)
+        except Exception as e:
+            raise ConfigException(str(e))
 
 
 if __name__ == '__main__':
