@@ -12,7 +12,6 @@ class RequestsException(Exception):
         :param error_code: last time requests code  or api return code
         :param error_info: error information   or  api  return message
         """
-        super().__init__(self)
         self.error_code = error_code
         self.error_info = error_info
 
@@ -27,7 +26,6 @@ class ConfigException(Exception):
         :param error_code:
         :param error_info: error information
         """
-        super().__init__(self)
         self.error_code = error_code
         self.error_info = error_info
 
@@ -42,7 +40,6 @@ class JsonArgsException(Exception):
         :param error_code:
         :param error_info: error information
         """
-        super().__init__(self)
         self.error_code = error_code
         self.error_info = error_info
 
