@@ -33,8 +33,8 @@ class ConfigFileValidator(object):
         :return:
         """
         temp_config_path = os.path.join(BASE_DIR, "config_temp.py")
-        config_path = os.path.join(BASE_DIR, "config.py")
-        new_config = file.name != config_path
+        config_path = "config.py"
+        new_config = (file.name != config_path)
         if new_config:
             file_writer(file, temp_config_path)
         missing_params_info = "config file missing required params,they are qy_secret_access_key, qy_access_key_id, zone"
