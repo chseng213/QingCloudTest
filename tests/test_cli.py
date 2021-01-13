@@ -13,7 +13,7 @@ class CLITestCase(unittest.TestCase):
 
     def test_config_file(self):
         result = self.runner.invoke(cli,
-                                    ["-f", os.path.join(BASE_DIR, "config.ini")])
+                                    ["-f", os.path.join(BASE_DIR, "config.py")])
         print(result.output)
         assert result.exit_code == 0
 
