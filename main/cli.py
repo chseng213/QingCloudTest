@@ -2,6 +2,7 @@
 import os
 
 import click
+from click.testing import CliRunner
 
 from main.action import RunInstanceAction, DescribeInstanceAction, TerminateInstanceAction
 from main.utils import BASE_DIR, ConfigException, config_help_str, json_option_help_str, instances_n_help_str, \
@@ -15,7 +16,11 @@ from main.utils.validator import ConfigFileValidator
               default=os.path.join(BASE_DIR, "config.py"),
               help=config_help_str,
               )
-def cli(file):
+@click.pass_context
+def cli(ctx, file):
+    if ctx.invoked_subcommand is None:
+        result = CliRunner().invoke(cli, ["--help"])
+        click.echo(result.output)
     try:
         ConfigFileValidator.validator(file)
     except ConfigException as e:
