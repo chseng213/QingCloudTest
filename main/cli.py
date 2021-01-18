@@ -42,6 +42,7 @@ def cli(ctx, file):
 def run_instances(image_id, login_mode, login_keypair, login_passwd, instance_type,
                   cpu, memory, instance_name, count, vxnets, json_args):
     """action RunInstances
+
     :required params `image_id` `instance_type` `login_mode` ,
     other unnecessary params use json format string
     """
