@@ -3,8 +3,6 @@ import sys
 
 import click
 
-from main.utils.errors import ConfigException
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 # help string
@@ -63,6 +61,11 @@ Whether to destroy the host directly, if you specify "1", it will not enter the 
 """
 login_help_str = "needed when your chosen login mode is %s"
 
+instance_class_help_str = """
+instance performance type: 
+
+performance type: 0, ultra high performance type: 1, basic type: 101, enterprise type: 201"""
+
 
 # Python version recognition
 def get_version():
@@ -84,8 +87,12 @@ def file_writer(source_file, target_file):
     :param target_file:file path
     :return:
     """
-    try:
-        with click.open_file(target_file, "w", encoding="utf-8") as f:
-            f.write(source_file.read())
-    except Exception as e:
-        raise ConfigException("file io error %s" % str(e))
+
+    with click.open_file(target_file, "w", encoding="utf-8") as f:
+        f.write(source_file.read())
+
+
+def exit_with_request_error(error):
+    # use click echo can  compatible with different python versions
+    click.echo(error)
+    sys.exit(1)
