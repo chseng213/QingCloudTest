@@ -2,9 +2,8 @@
 import json
 import os
 
-import click
-
-from main.utils import BASE_DIR, file_writer, ConfigException
+from main.utils import BASE_DIR, file_writer
+from main.utils.errors import BadParameterException, ConfigException
 
 
 class ArgsValidator(object):
@@ -17,7 +16,7 @@ class ArgsValidator(object):
         try:
             return json.loads(params)
         except json.decoder.JSONDecodeError:
-            raise click.BadParameter('json args need to be in format JSON STRING')
+            return BadParameterException(4, 'json args need to be in format JSON STRING')
 
 
 class ConfigFileValidator(object):
@@ -32,6 +31,7 @@ class ConfigFileValidator(object):
         :param file:
         :return:
         """
+        return_obj = 0
         temp_config_path = os.path.join(BASE_DIR, "config_temp.py")
         config_path = "config.py"
         new_config = (file.name != config_path)
@@ -44,18 +44,19 @@ class ConfigFileValidator(object):
                 from config_temp import qy_secret_access_key, qy_access_key_id, zone
             else:
                 from config import qy_secret_access_key, qy_access_key_id, zone
-            assert isinstance(qy_access_key_id, str) \
-                   and isinstance(qy_access_key_id, str) \
-                   and isinstance(zone, str), not_string_info
+            if not (isinstance(qy_access_key_id, str)
+                    and isinstance(qy_access_key_id, str)
+                    and isinstance(zone, str)):
+                return_obj = ConfigException(3, not_string_info)
             # rename config file
             with open(temp_config_path) as f:
                 file_writer(f, config_path) if new_config else 0
         except ImportError:
-            raise ConfigException(missing_params_info)
-        except AssertionError:
-            raise ConfigException(not_string_info)
+            return_obj = ConfigException(2, missing_params_info)
         except Exception as e:
-            raise ConfigException(str(e))
+            return_obj = ConfigException(-1, str(e))
+        finally:
+            return return_obj
 
 
 if __name__ == '__main__':
